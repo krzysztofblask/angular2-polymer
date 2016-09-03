@@ -11,8 +11,7 @@ import {
   IterableDiffers,
   DefaultIterableDiffer
 } from '@angular/core';
-import { NgControl as OldNgControl, NG_VALUE_ACCESSOR as OLD_NG_VALUE_ACCESSOR } from '@angular/common';
-import { FormControlName, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { NgControl as OldNgControl, NG_VALUE_ACCESSOR as OLD_NG_VALUE_ACCESSOR, FormControlName, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 import { BrowserDomAdapter } from '@angular/platform-browser/src/browser/browser_adapter';
 import { __platform_browser_private__ } from '@angular/platform-browser';
@@ -157,15 +156,15 @@ export function PolymerElement(name: string): any[] {
 
   const formElementDirective:any = Directive({
     selector: name,
-    providers: [
-      provide(OLD_NG_VALUE_ACCESSOR, {
+    providers: [{
+        provide: OLD_NG_VALUE_ACCESSOR, 
         useExisting: forwardRef(() => formElementDirective),
         multi: true
-      }),
-      provide(NG_VALUE_ACCESSOR, {
+      },{
+        provide : NG_VALUE_ACCESSOR, 
         useExisting: forwardRef(() => formElementDirective),
         multi: true
-      })
+      }
     ],
     host: (isCheckedElement ? { '(checkedChange)': 'onValueChanged($event)' } : { '(valueChange)': 'onValueChanged($event)' })
   }).Class({
