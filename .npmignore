@@ -1,10 +1,5 @@
 # Source files
-bower.json
-index.ts
-/src/
-tsconfig.json
-typings/
-typings.json
+
 
 # Created by https://www.gitignore.io/api/node,bower,typings
 
